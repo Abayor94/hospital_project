@@ -1,316 +1,96 @@
-### **Hospital Readmission Analysis \& Patient Risk Profiling**
+# Hospital Readmission Analysis & Patient Risk Profiling  
+*SQL · Excel · Tableau · Healthcare Analytics*
 
-A Complete SQL + Tableau Healthcare Analytics Project
+## Project Overview
+This repository contains a complete **end-to-end healthcare analytics project** analyzing hospital readmissions using a real-world patient dataset of over **25,000 records**.
 
+The objective is to uncover **clinical and demographic patterns** that drive readmissions and translate complex patient data into **actionable insights** that support hospital decision-making, patient prioritization, and resource planning.
 
+---
 
-#### 
+## Problem Statement
+Hospital readmissions are a key indicator of care quality and operational efficiency. This analysis focuses on:
+- Measuring overall readmission rates  
+- Examining how clinical indicators (A1C, glucose tests, diabetes medication) relate to readmissions  
+- Identifying high-risk patient groups  
+- Producing insights that can inform clinical prioritization and follow-up strategies  
 
-#### **Project Overview**
+---
 
-This project analyzes 25,000 hospital patient records to answer a key clinical question:
+## Key Insights
+- **Overall readmission rate:** ~47.02% of patients were readmitted  
+- **Age effects:** Highest readmission rates observed among elderly patients aged 70–90  
+- **Glucose / A1C patterns:**  
+  - High glucose → 52.04% readmission rate  
+  - High A1C → 86.52% of patients on diabetes medication  
+- **Risk scoring:** A custom risk score (0–4) identified **2,107 high-risk patients (~8.43%)**  
+- **Diabetes subgroup:** Diabetes patients accounted for **34.79% of readmissions** with a **46.53%** readmission rate  
 
+**Clinical value:** These insights help healthcare teams identify vulnerable patient segments, improve follow-up care, and allocate monitoring resources more effectively.
 
+---
 
-Is diabetes a predictor of hospital readmission?
+## Tools & Technologies
 
+| Category | Tools |
+|--------|------|
+| Data cleaning & preprocessing | Excel |
+| Data processing & analysis | PostgreSQL / SQL |
+| Visualization | Tableau |
+| Reporting | Word / Notion / Markdown |
 
+All analysis queries are available in the `sql/queries.sql` file.
 
-Using SQL for cleaning and analysis and Tableau for visualization, the project identifies high-risk patient groups, evaluates readmission drivers, and provides clinical recommendations to support better hospital decision-making.
+---
 
+## Tableau Dashboards
+Interactive dashboards were created to visualize:
+- Patient demographics and clinical profiles  
+- Readmission drivers across age groups and departments  
+- Risk distribution and clinical recommendations  
 
-
-
-
-#### **Repository Structure**
-
-hospital\_readmission\_project/
-
-│
-
-├── dataset/
-
-│   └── hp\_readm.csv
-
-│
-
-├── sql/
-
-│   └── queries.sql
-
-│
-
-├── tableau/
-
-│   ├── project\_screenshots/
-
-│   │    ├── dashboard1.png
-
-│   │    ├── dashboard2.png
-
-│   │    └── dashboard3.png
-
-│   └── tableau\_project\_link.txt
-
-│
-
-├── report/
-
-│   └── Final Project Report.docx
-
-│
-
-└── README.md
-
-
-
-
-
-#### **Project Objectives**
-
-* Measure hospital readmission rates across patient groups.
-* Investigate diabetes-related indicators (A1C, glucose test, diabetes medication).
-* Identify high-risk patients using a custom composite risk score.
-* Analyze clinical and demographic patterns influencing readmission.
-* Create dashboards to support data-driven decision-making.
-* Provide actionable clinical recommendations.
-
-
-
-
-
-#### **Dataset Description**
-
-* Source: Kaggle – Predicting Hospital Readmissions
-* Rows: 25,000
-* Columns: 17
-
-
-
-Key fields:
-
-age\_bracket, time\_in\_hospital, num\_lab\_procedures, medical\_specialty,
-
-glucose\_test, A1Ctest, diabetes\_med, changes\_in\_db\_med, readmitted
-
-
-
-Dataset stored here:
-
-dataset/hp\_readm.csv
-
-
-
-
-
-#### **Technologies Used**
-
-* SQL (PostgreSQL) – ETL + analysis
-* Tableau Public – dashboards
-* Excel – initial cleaning
-
-
-
-
-
-#### **ETL \& Data Preparation Summary**
-
-* Cleaned column names in Excel.
-* Loaded dataset into PostgreSQL.
-* Converted Yes/No fields → Boolean (true/false).
-* Checked for nulls in procedures/medications.
-* Validated data integrity (row counts matched CSV).
-* Created a reproducible database structure using queries.sql.
-
-
-
-
-
-#### **SQL Analysis Summary**
-
-
-
-Full SQL scripts available here:
-
-sql/queries.sql
-
-
-
-#### **Key Findings**
-
-**1. Readmission Rate**
-
-47.02% of all patients were readmitted.
-
-
-
-**2. Age \& Readmission**
-
-Oldest groups have the highest readmission rates:
-
-80–90 → 49.58%
-
-70–80 → 48.79%
-
-
-
-**3. Glucose \& A1C Patterns**
-
-High glucose: 52.04% readmission
-
-High A1C: 86.52% on diabetes medication
-
-
-
-**4. Medical Specialties**
-
-Highest readmission counts:
-
-Internal Medicine
-
-Emergency / Trauma
-
-Family / General Practice
-
-
-
-**5. Risk Score (0–4)**
-
-Scoring criteria:
-
-+1 for each: high glucose, high A1C, diabetes\_med, changes\_in\_db\_med.
-
-Distribution (verified in SQL):
-
-Score 0 → 5,290 patients
-
-
-
-Score 1 → 7,303
-
-
-
-Score 2 → 10,300
-
-
-
-Score 3 → 2,087
-
-
-
-Score 4 → 20
-
-
-
-High-risk (Score ≥3): 2,107 patients (8.428%)
-
-
-
-**6. Diabetes \& Readmission**
-
-Diabetes patients: 8,788
-
-Readmitted diabetes patients: 4,089
-
-Diabetes readmission rate: 46.53%
-
-34.79% of all readmitted patients had diabetes.
-
-
-
-
-
-#### **Tableau Dashboards**
-
-View the live Tableau project:
-
+🔗 **Live dashboards:**  
 https://public.tableau.com/views/Hospitalreadmissionanalysispatientriskprofiling/Dashboard1
 
+---
 
+## How to Run the Project
+1. Download the dataset from `dataset/hp_readm.csv`  
+2. Load the data into PostgreSQL (or any compatible SQL environment)  
+3. Execute the queries in `sql/queries.sql` to reproduce the analysis  
+4. Open the Tableau files in the `tableau/` folder to explore visualizations  
+5. Review the detailed findings in `report/Final Project Report.docx`  
 
-Screenshots included in:
+---
 
-tableau/project\_screenshots/
+## Limitations
+- Diagnosis fields are broad categories rather than detailed ICD codes  
+- Some specialty categories contain missing values  
+- The risk score is rule-based and not a predictive statistical model  
 
+---
 
+## Future Work
+- Develop predictive models (logistic regression, random forest)  
+- Integrate comorbidity indices for deeper risk assessment  
+- Perform time-to-readmission analysis  
+- Incorporate lab result timelines and medication dosage data  
 
-**Dashboards:**
+---
 
-* **Dashboard 1** — Patient Profile \& Risk Overview
-
-
-
-Age distribution
-
-
-
-Risk score distribution
-
-
-
-Glucose test patterns
-
-
-
-High-risk KPI
-
-
-
-* **Dashboard 2** — Readmission Drivers
-
-
-
-Readmission by medical specialty
-
-
-
-Glucose \& A1C readmission comparisons
-
-
-
-Top diagnoses
-
-
-
-* **Dashboard 3** — Insights \& Recommendations
-
-
-
-Narrative summary
-
-
-
-
-
-#### **Clinical recommendations**
-
-**Clinical Recommendations**
-
-* Prioritize elderly patients (70–90) for follow-up.
-* Strengthen diabetes and glucose management protocols.
-* Use risk scores to flag high-risk patients for early intervention.
-* Improve workflows in Internal Medicine \& Emergency departments.
-
-
-
-
-
-**Limitations**
-
-* Diagnosis fields are broad categories (not detailed ICD codes).
-* Missing values for some specialties.
-* Rule-based risk score (not a statistical model).
-
-
-
-
-
-**Future Work**
-
-* Build a predictive model (Logistic Regression / Random Forest).
-* Add comorbidity indices for deeper insight.
-* Perform time-to-readmission analysis.
-* Include medication dosage \& lab timelines.
-
-
-
+## Repository Structure
+```text
+hospital_project/
+├── dataset/
+│   └── hp_readm.csv
+├── sql/
+│   └── queries.sql
+├── tableau/
+│   ├── project_screenshots/
+│   │   ├── dashboard1.png
+│   │   ├── dashboard2.png
+│   │   └── dashboard3.png
+│   └── tableau_project_link.txt
+├── report/
+│   └── Final Project Report.docx
+└── README.md
